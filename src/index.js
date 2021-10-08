@@ -14,19 +14,24 @@ stopBtn.addEventListener('click', onClickStopBtn)
 
 let timeId = null;
 
+const styleButton = function () {
+    button.forEach((el) => {
+        el.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length + 1)];
+        el.style.width = 100 + 'px'
+        el.style.height = 50 + 'px'
+        el.style.borderRadius = 5 + 'px'
+
+    })
+}
+
 const randomIntegerFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 function backGroundColorRgb(evt) {
     body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length - 1)];
+    styleButton()
 
-    button.forEach((el) => {
-        el.style.width = 100 + 'px'
-        el.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length + 1)];
-        el.style.height = 50 + 'px'
-        el.style.borderRadius = 5 + 'px'
-    })
 }
 
 function onClickStartBtn(evt) {
@@ -42,6 +47,8 @@ function onClickStopBtn(evt) {
         clearInterval(timeId)
         startBtn.removeAttribute("disabled", "disabled")
     }
+
+
 }
 
 
